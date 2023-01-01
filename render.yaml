@@ -1,0 +1,32 @@
+services:
+  # A Docker web service
+  - type: web
+    name: alist
+    env: docker
+    repo: https://github.com/Steven-WZH/alist-render.git # optional
+    region: singapore
+    plan: free # optional (defaults to starter)
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 5244
+      - key: DB_TYPE
+        value: mysql
+      - key: DB_HOST
+        # value: db_host
+        sync: false
+      - key: DB_PORT
+        value: 3306
+      - key: DB_USER
+        # value: db_user
+        sync: false
+      - key: DB_PASS
+        # value: db_password
+        sync: false
+      - key: DB_NAME
+        # value: alist
+        sync: false
+      - key: DB_TABLE_PREFIX
+        value: alist_
+      - key: CDN
+        value: https://npm.elemecdn.com/alist-web@$version/dist
